@@ -26,7 +26,7 @@ git clone https://github.com/jessmott18/monitoring.git
 cd monitoring
 ```
 
-To add a new server to collect info from edit and add this to the end of your'prometheus.yml'
+To add a new server to collect info from edit and add this to the end of your 'prometheus.yml'
 
 ```yaml
   - job_name: "server"
@@ -48,6 +48,51 @@ Access your tools:
 
 ---
 
+## Access Grafana Dashboard
+
+### Add Prometheus and Loki as Data Sources
+
+Navigate to: **Connections → Data Sources → Add new data source**
+
+1. **Prometheus**
+    
+    - Prometheus Server URL: `http://serverIPrunningPrometheus:9090`
+        
+2. **Loki**
+    
+    - Connection URL: `http://serverIPrunningLoki:3100`
+        
+
+### Display Metrics
+
+1. Go to **Dashboards** → click **New** → **New Dashboard**
+    
+2. Click **Import Dashboard**
+    
+3. Paste this ID: `1860` and click Load
+    
+4. Load "Node Exporter" dashboard
+    
+5. Set datasource to **prometheus**
+    
+6. Switch between jobs in the job dropdown to view metrics from different servers
+    
+
+Explore more dashboards here: [Grafana Dashboards](https://grafana.com/grafana/dashboards/)
+
+---
+
+## 6. View Loki Logs
+
+1. Navigate to **Explore → Logs**
+    
+2. Set datasource to **loki**
+    
+3. Browse logs by container name from incoming servers
+
+---
+
+
 ##  Install Node Exporter on Target Servers
 
 Run this script on each server you want to monitor:
@@ -57,6 +102,13 @@ wget https://raw.githubusercontent.com/jessmott18/monitoring/main/install-node-e
 chmod +x install-node-exporter.sh
 ./install-node-exporter.sh
 ```
+You can disable Node Exporter anytime:
+
+```bash
+sudo systemctl disable node_exporter
+```
+
+
 
 ###
 
