@@ -26,7 +26,7 @@ git clone https://github.com/jessmott18/monitoring.git
 cd monitoring
 ```
 
-To add a new server to collect info from update 'prometheus.yml'
+To add a new server to collect info from edit and add this to the end of your'prometheus.yml'
 
 ```yaml
   - job_name: "server"
@@ -42,9 +42,9 @@ docker compose up -d
 
 Access your tools:
 
-- Grafana: [http://\<ServerIP>:3000](http://localhost:3000) (user: `admin`, pass: `admin`)
+- Grafana: http://\<ServerIP>:3000 (user: `admin`, pass: `admin`)
 - Prometheus: http\://\<ServerIP>:9090
-- Loki API: [http://\<ServerIP>:3100](http://localhost:3100)
+- Loki API: http://\<ServerIP>:3100
 
 ---
 
