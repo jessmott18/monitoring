@@ -53,7 +53,7 @@ Access your tools:
 Run this script on each server you want to monitor:
 
 ```bash
-wget https://raw.githubusercontent.com/YOUR-USERNAME/monitoring/main/install-node-exporter.sh
+wget https://raw.githubusercontent.com/jessmott18/monitoring/main/install-node-exporter.sh
 chmod +x install-node-exporter.sh
 ./install-node-exporter.sh
 ```
