@@ -65,17 +65,15 @@ Navigate to: **Connections → Data Sources → Add new data source**
 
 ### Display Metrics
 
-1. Go to **Dashboards** → click **New** → **New Dashboard**
+1. Go to **Dashboards** → click **New** → **Import**
     
-2. Click **Import Dashboard**
+2. Paste this ID: `1860` and click Load
     
-3. Paste this ID: `1860` and click Load
+3. Load "Node Exporter" dashboard
     
-4. Load "Node Exporter" dashboard
+4. Set datasource to **prometheus**
     
-5. Set datasource to **prometheus**
-    
-6. Switch between jobs in the job dropdown to view metrics from different servers
+5. Switch between jobs in the job dropdown to view metrics from different servers
     
 
 Explore more dashboards here: [Grafana Dashboards](https://grafana.com/grafana/dashboards/)
