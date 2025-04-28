@@ -18,6 +18,8 @@ For access to only the Grafana UI:
 
   Grafana internally connects to Loki (for logs) and Prometheus (for metrics) through the Docker network, so do not need to expose Prometheus, Loki, or Alloy externally unless you want to access their UIs   separately.
 
+### If using ufw: `sudo ufw allow 3000/tcp`
+
 ### Optional Ports (only if you want external access)
 If you want to also access the interfaces for debugging or manually checking them:
 
