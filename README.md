@@ -35,10 +35,14 @@ If you want to also access the interfaces for debugging or manually checking the
 ## 📦 What's Included
 
 - `docker-compose.yml` – Runs the core stack
+  Within Docker Compose, services can communicate with each other over the internal Docker network by container names (e.g., http://loki:3100).
 - `prometheus.yml` – Prometheus config with custom scrape targets
 - `loki-config.yaml` – Loki log storage configuration
 - `config.alloy` – Alloy log forwarding setup
 - `install-node-exporter.sh` – Shell script to install Node Exporter on any Linux server
+
+## PostgreSQL
+Grafana uses a PostgreSQL database (postgres container) for persistent storage of dashboards, users, and settings. PostgreSQL will automatically be initialized with the credentials provided in docker-compose.yml.
 
 ---
 
@@ -77,6 +81,8 @@ Access your tools:
 ---
 
 ## Access Grafana Dashboard
+
+**Important:** After first login (admin/admin), Grafana will require you to set a new password. Use a strong password immediately to secure the environment.
 
 ### Add Prometheus and Loki as Data Sources
 
