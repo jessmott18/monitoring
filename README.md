@@ -3,6 +3,11 @@
 This repo contains a lightweight monitoring and logging stack using **Prometheus**, **Grafana**, **Loki**, and **Alloy**, plus a script for installing **Node Exporter** on remote servers.
 
 ---
+## Minimum Server Requirements
+Resource | Minimum | Recommended
+CPU | 4 vCPU | 8 vCPU
+RAM | 16 GB | 32 GB
+Storage | 200 GB SSD | 500 GB SSD
 
 ## 📦 What's Included
 
