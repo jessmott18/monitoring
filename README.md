@@ -54,7 +54,7 @@ git clone https://github.com/jessmott18/monitoring.git
 cd monitoring
 ```
 
-To add a new server to collect info from edit and add this to the end of your 'prometheus.yml'
+To add a new server to collect metrics from edit and add this to the end of your 'prometheus.yml'
 
 ```yaml
   - job_name: "server"
