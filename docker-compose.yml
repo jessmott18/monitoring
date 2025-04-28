@@ -4,34 +4,42 @@ services:
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
-    volumes:
-      - prometheus-data:/prometheus  # Persistent storage for Prometheus data  
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml # Config file
     ports:
       - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml         # Mount Prometheus config file
+      - prometheus-data:/prometheus                             # Persistent storage for Prometheus metrics data  
     restart: unless-stopped
 
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
+    depends_on:
+      - postgres
     ports:
       - "3000:3000"
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin                        # Set Grafana admin password(Grafana default is admin/admin, it will require a change after first login)
+      - GF_SERVER_ROOT_URL=https://devops.programma.digital     # Set Grafana root URL
+      - GF_DATABASE_TYPE=postgres                               # Use PostgreSQL as the database 
+      - GF_DATABASE_HOST=postgres:5432                          # PostgreSQL host and port 
+      - GF_DATABASE_NAME=grafana_db                             # PostgreSQL database name
+      - GF_DATABASE_USER=grafana                                # PostgreSQL user
+      - GF_DATABASE_PASSWORD=grafana_password                   # PostgreSQL password(consider using a more secure password)
     volumes:
-      - grafana-data:/var/lib/grafana # Persistent storage for Grafana data 
-      - /var/log:/var/log  # Mount system logs if needed
-    restart: unless-stopped
+      - grafana-data:/var/lib/grafana                           # Persistent storage for Grafana data (dashboards, etc.)
+      - /var/log:/var/log                                       # (Optional) Mount system logs for Grafana to access if needed
 
   loki:
     image: grafana/loki:latest
-    container_name: loki-local
+    container_name: loki
     ports:
       - "3100:3100"
     volumes:
-      - loki-data:/loki  # Persistent storage for Loki data
-      - ./loki-config.yaml:/etc/loki/loki-config.yaml  # Config file  
-    command: -config.file=/etc/loki/loki-config.yaml
+      - loki-data:/tmp/loki                                     # Persistent storage for Loki chunks
+      - loki-index:/var/loki/index                              # Persistent storage for Loki index
+      - ./loki-config.yaml:/etc/loki/loki-config.yaml           # Mount Loki config file  
+    command: -config.file=/etc/loki/loki-config.yaml            # Use the mounted config file
     restart: unless-stopped
 
   alloy:
@@ -39,15 +47,29 @@ services:
     container_name: alloy
     ports:
       - "12345:12345"
+    volumes: 
+      - /tmp:/tmp                                               # (Optional) Mount system temp directory for Alloy to access if needed
+      - alloy-data:/var/lib/alloy/data                          # Persistent storage for Alloy internal data
+      - ./config.alloy:/etc/alloy/config.alloy                  # Mount Alloy config file
+      - /var/run/docker.sock:/var/run/docker.sock               # Mount Docker socket for Alloy to access Docker containers               
+    command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy      
+    restart: unless-stopped
+      
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER:     grafana                                # PostgreSQL user
+      POSTGRES_PASSWORD: grafana_password                       # PostgreSQL password(consider using a more secure password)                 
+      POSTGRES_DB:       grafana_db                             # PostgreSQL database name
     volumes:
-      - alloy-data:/var/lib/alloy/data  # Persistent storage for Alloy data
-      - ./config.alloy:/etc/alloy/config.alloy # Config file
-      - /var/run/docker.sock:/var/run/docker.sock 
-    command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
+      - postgres-data:/var/lib/postgresql/data                  # Persistent storage for PostgreSQL data
     restart: unless-stopped
 
 volumes:
   prometheus-data:
   grafana-data:
   loki-data:
-  alloy-data:
+  loki-index:
+  alloy-data:  
+  postgres-data:
