@@ -32,7 +32,7 @@ If you want to also access the interfaces for debugging or manually checking the
 
   But for basic functionality with Grafana only, you can ignore exposing these.
 
-## 📦 What's Included
+## What's Included
 
 - `docker-compose.yml` – Runs the core stack
 
@@ -41,6 +41,17 @@ If you want to also access the interfaces for debugging or manually checking the
 - `loki-config.yaml` – Loki log storage configuration
 - `config.alloy` – Alloy log forwarding setup (collection by docker container and directory)
 - `install-node-exporter.sh` – Shell script to install Node Exporter on any Linux server
+
+## Recommended File Updates:
+Inside `config.alloy`:
+```
+local.file_match "debug_log" {
+  path_targets = [
+    {__path__ = "/tmp/*.log" },
+  ]
+}
+```
+To collect logs by directory/file: update `__path__ = "..."`  line with desired path to directory/files
 
 ## PostgreSQL
 Grafana uses a PostgreSQL database (postgres container) for persistent storage of dashboards, users, and settings. PostgreSQL will automatically be initialized with the credentials provided in docker-compose.yml.
