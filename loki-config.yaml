@@ -7,20 +7,20 @@ common:
   ring:
     instance_addr: 127.0.0.1
     kvstore:
-      store: inmemory
-  replication_factor: 1  # Change this if you're clustering Loki
-  path_prefix: /tmp/loki
+      store: inmemory                     # Use in-memory key-value store for the ring (suitable for single instance setups)
+  replication_factor: 1                   # Number of replicas for log data (1 for single instance setups)
+  path_prefix: /tmp/loki                  # Temporary storage path for Loki data (consider updating to a more permanent location)            
 
 schema_config:
   configs:
   - from: 2020-05-15
-    store: tsdb
-    object_store: filesystem
-    schema: v13
+    store: tsdb                           # Use Time Series Database (TSDB) format for storing log data
+    object_store: filesystem              # Use filesystem for object storage (suitable for single instance setups)
+    schema: v13 
     index:
       prefix: index_
       period: 24h
 
 storage_config:
   filesystem:
-    directory: /tmp/loki/chunks  # Consider updating this to a more permanent location
+    directory: /tmp/loki/chunks           # Temporary storage path for Loki chunks (consider updating to a more permanent location)
