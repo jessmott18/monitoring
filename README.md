@@ -35,10 +35,11 @@ If you want to also access the interfaces for debugging or manually checking the
 ## 📦 What's Included
 
 - `docker-compose.yml` – Runs the core stack
+
   Within Docker Compose, services can communicate with each other over the internal Docker network by container names (e.g., http://loki:3100).
 - `prometheus.yml` – Prometheus config with custom scrape targets
 - `loki-config.yaml` – Loki log storage configuration
-- `config.alloy` – Alloy log forwarding setup
+- `config.alloy` – Alloy log forwarding setup (collection by docker container and directory)
 - `install-node-exporter.sh` – Shell script to install Node Exporter on any Linux server
 
 ## PostgreSQL
