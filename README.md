@@ -10,6 +10,25 @@ RAM | 16 GB to 32 GB+
 
 Storage | 200 GB SSD to 500 GB SSD
 
+## Port Requirements
+Minimum Ports To Expose
+For access to only the Grafana UI:
+
+Grafana: 3000:3000
+
+Grafana internally connects to Loki (for logs) and Prometheus (for metrics) through the Docker network, so do not need to expose Prometheus, Loki, or Alloy externally unless you want to access their UIs separately.
+
+Optional Ports (only if you want external access)
+If you want to also access the interfaces for debugging or manually checking them:
+
+Prometheus UI: 9090
+
+Loki API/UI (for direct querying): 3100
+
+Alloy internal server: 12345 (mostly for internal Alloy diagnostics — not needed for normal operation)
+
+But for basic functionality with Grafana only, you can ignore exposing these.
+
 ## 📦 What's Included
 
 - `docker-compose.yml` – Runs the core stack
