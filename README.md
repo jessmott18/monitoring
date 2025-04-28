@@ -71,8 +71,8 @@ docker compose up -d
 Access your tools:
 
 - Grafana: http://\<ServerIP>:3000 (user: `admin`, pass: `admin`)
-- Prometheus: http\://\<ServerIP>:9090
-- Loki API: http://\<ServerIP>:3100
+- Prometheus: http\://\<ServerIP>:9090 (optional)
+- Loki API: http://\<ServerIP>:3100    (optional)
 
 ---
 
