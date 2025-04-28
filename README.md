@@ -5,7 +5,9 @@ This repo contains a lightweight monitoring and logging stack using **Prometheus
 ---
 ## Minimum Server Requirements
 CPU cores| 4 to 8+
+
 RAM | 16 GB to 32 GB+
+
 Storage | 200 GB SSD to 500 GB SSD
 
 ## 📦 What's Included
