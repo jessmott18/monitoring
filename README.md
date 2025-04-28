@@ -47,11 +47,11 @@ Inside `config.alloy`:
 ```
 local.file_match "debug_log" {
   path_targets = [
-    {__path__ = "/tmp/*.log" },
+    --> {__path__ = "/tmp/*.log" },
   ]
 }
 ```
-To collect logs by directory/file: update `__path__ = "..."`  line with desired path to directory/files
+To collect logs by directory/file: **Update** `__path__ = "..."`  line with desired path to directory/files
 
 ## PostgreSQL
 Grafana uses a PostgreSQL database (postgres container) for persistent storage of dashboards, users, and settings. PostgreSQL will automatically be initialized with the credentials provided in docker-compose.yml.
