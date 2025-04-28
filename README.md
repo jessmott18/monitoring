@@ -22,7 +22,7 @@ Storage | 200 GB SSD to 500 GB SSD
 
 ##  Getting Started (Main Server)
 
-### 1. Clone and enter the directory:
+### Clone and enter the directory:
 
 ```
 git clone https://github.com/jessmott18/monitoring.git 
@@ -86,7 +86,7 @@ Explore more dashboards here: [Grafana Dashboards](https://grafana.com/grafana/d
 
 ---
 
-## 6. View Loki Logs
+## View Loki Logs
 
 1. Navigate to **Explore → Logs**
     
