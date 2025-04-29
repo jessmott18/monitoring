@@ -32,6 +32,16 @@ If you want to also access the interfaces for debugging or manually checking the
 
   But for basic functionality with Grafana only, you can ignore exposing these.
 
+## Clone and enter the directory:
+
+```
+git clone https://github.com/jessmott18/monitoring.git 
+```
+
+```
+cd monitoring
+```
+
 ## What's Included
 
 - `docker-compose.yml` – Runs the core stack
@@ -53,23 +63,6 @@ local.file_match "debug_log" {
 ```
 To collect logs by directory/file: **Update** `__path__ = "..."`  line with desired path to directory/files
 
-## PostgreSQL
-Grafana uses a PostgreSQL database (postgres container) for persistent storage of dashboards, users, and settings. PostgreSQL will automatically be initialized with the credentials provided in docker-compose.yml.
-
----
-
-##  Getting Started (Main Server)
-
-### Clone and enter the directory:
-
-```
-git clone https://github.com/jessmott18/monitoring.git 
-```
-
-```
-cd monitoring
-```
-
 To add a new server to collect metrics from edit and add this to the end of your 'prometheus.yml'
 
 ```yaml
@@ -77,6 +70,13 @@ To add a new server to collect metrics from edit and add this to the end of your
     static_configs:
       - targets: ['serverIP:9100']
 ```
+
+## PostgreSQL
+Grafana uses a PostgreSQL database (postgres container) for persistent storage of dashboards, users, and settings. PostgreSQL will automatically be initialized with the credentials provided in docker-compose.yml.
+
+---
+
+##  Getting Started (Main Server)
 
 ### Start Everything
 
