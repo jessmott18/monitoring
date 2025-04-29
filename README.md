@@ -142,7 +142,7 @@ Explore more dashboards here: [Grafana Dashboards](https://grafana.com/grafana/d
     
 2. Set datasource to **loki**
     
-3. Browse logs by container name from incoming servers
+3. Browse logs by container and filename name from incoming servers
 
 ---
 
