@@ -19,7 +19,11 @@ Required Ports:
   - Prometheus 9100:9100
 
 ### If using ufw: 
-`sudo ufw allow 3000/tcp`
+```
+sudo ufw allow 3000/tcp
+sudo ufw allow 3100/tcp
+sudo ufw allow 9100/tcp
+```
 
 ### Optional Ports (only if you want external access)
 If you want to also access the interfaces for debugging or manually checking them:
