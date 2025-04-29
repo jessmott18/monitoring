@@ -102,7 +102,7 @@ Access your tools:
 
 ### Add Prometheus and Loki as Data Sources
 
-Navigate to: **Connections → Data Sources → Add new data source**
+Navigate to: **Connections → Data Sources → Add data source**
 
 1. **Prometheus**
     
