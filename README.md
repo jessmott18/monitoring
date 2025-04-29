@@ -58,7 +58,7 @@ Inside `config.alloy`:
 local.file_match "debug_log" {
   path_targets = [
     --> {__path__ = "/tmp/*.log" },
-        {__path__ - "..."},
+        {__path__ = "..."},
   ]
 }
 ```
