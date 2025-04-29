@@ -34,6 +34,8 @@ If you want to also access the interfaces for debugging or manually checking the
 
 ## Clone and enter the directory:
 
+**Important:** Ensure you are inside the root directory --> /root
+
 ```
 git clone https://github.com/jessmott18/monitoring.git 
 ```
