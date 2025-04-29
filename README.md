@@ -127,7 +127,7 @@ Navigate to: **Connections → Data Sources → Add data source**
     
 2. Paste this ID: `1860` and click Load
     
-3. Load "Node Exporter" dashboard
+3. Load "Node Exporter" dashboard with datasource prometheus
     
 4. Set datasource to **prometheus**
     
