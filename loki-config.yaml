@@ -9,7 +9,7 @@ common:
     kvstore:
       store: inmemory                     # Use in-memory key-value store for the ring (suitable for single instance setups)
   replication_factor: 1                   # Number of replicas for log data (1 for single instance setups)
-  path_prefix: /tmp/loki                  # Temporary storage path for Loki data (consider updating to a more permanent location)            
+  path_prefix: /var/loki                  # Temporary storage path for Loki data (consider updating to a more permanent location)            
 
 schema_config:
   configs:
@@ -23,4 +23,4 @@ schema_config:
 
 storage_config:
   filesystem:
-    directory: /tmp/loki/chunks           # Temporary storage path for Loki chunks (consider updating to a more permanent location)
+    directory: /var/loki/chunks           # Temporary storage path for Loki chunks (consider updating to a more permanent location)
