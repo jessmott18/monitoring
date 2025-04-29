@@ -73,14 +73,6 @@ To add a new server to collect metrics from edit and add this to the end of your
       - targets: ['serverIP:9100']
 ```
 
-## Persistent Storage Setup
-
-Loki needs a writable directory inside the container to keep its index and chunk files. Since we mount a host folder (`./loki-data`) into the container at `/var/loki`, we must:
- **Create the directory on the host**  
-   ```
-   mkdir -p ./loki-data
-  ```
-
 ## PostgreSQL
 Grafana uses a PostgreSQL database (postgres container) for persistent storage of dashboards, users, and settings. PostgreSQL will automatically be initialized with the credentials provided in docker-compose.yml.
 
