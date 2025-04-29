@@ -36,8 +36,7 @@ services:
     ports:
       - "3100:3100"
     volumes:
-      - loki-data:/tmp/loki                                     # Persistent storage for Loki chunks
-      - loki-index:/var/loki/index                              # Persistent storage for Loki index
+      - ./loki-data:/var/loki                                   # Persistent storage for Loki index and chunks
       - ./loki-config.yaml:/etc/loki/loki-config.yaml           # Mount Loki config file  
     command: -config.file=/etc/loki/loki-config.yaml            # Use the mounted config file
     restart: unless-stopped
@@ -70,6 +69,5 @@ volumes:
   prometheus-data:
   grafana-data:
   loki-data:
-  loki-index:
   alloy-data:  
   postgres-data:
