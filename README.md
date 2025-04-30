@@ -68,6 +68,22 @@ local.file_match "debug_log" {
 ```
 To collect logs by directory/file: **Update** `__path__ = "..."`  line with desired path to directory/files
 
+In order for Alloy to be able to access these files, you must add the directory into the `docker-compose.yml`
+```
+alloy:
+    image: grafana/alloy:latest
+    container_name: alloy
+    ports:
+      - "12345:12345"
+    volumes: 
+      - /tmp:/tmp                                               # <---- This mounts the system tmp directory to collects logs from files within /tmp
+++++  - /newDirectory:newDirectory                              # add more lines like this to mount into needed directories
+      - alloy-data:/var/lib/alloy/data                          
+      - ./config.alloy:/etc/alloy/config.alloy                 
+      - /var/run/docker.sock:/var/run/docker.sock                            
+    command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy      
+    restart: unless-stopped
+```
 
 Inside `prometheus.yml`:
 Add a new server to collect metrics from. Edit and add this to the end of your file.
