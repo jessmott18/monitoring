@@ -158,8 +158,6 @@ chmod +x install-node-exporter.sh
     
 3. Use filter to browse logs by container and filename name from incoming servers
 
-
-Note: The newest version of Loki generates many errors due to an error on their end. You can ignore these for now. I will keep my eye on updates to Loki. 
 ---
 
 
