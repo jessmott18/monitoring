@@ -31,7 +31,7 @@ services:
       - /var/log:/var/log                                       # (Optional) Mount system logs for Grafana to access if needed
 
   loki:
-    image: grafana/loki:latest
+    image: grafana/loki:3.4.2                                   # Latest version currently has bugs, update to latest after they have new docker release
     container_name: loki
     user: root
     ports:
