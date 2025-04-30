@@ -68,7 +68,13 @@ local.file_match "debug_log" {
 ```
 To collect logs by directory/file: **Update** `__path__ = "..."`  line with desired path to directory/files
 
-To add a new server to collect metrics from edit and add this to the end of your 'prometheus.yml'
+
+Inside `prometheus.yml`:
+Add a new server to collect metrics from. Edit and add this to the end of your file.
+
+
+Any server you want to collect metrics from needs to be listed as a job with its IP address in this file.
+All these servers also need to be running NodeExporter(install at bottom of README)
 
 ```yaml
   - job_name: "server"
@@ -89,6 +95,11 @@ Grafana uses a PostgreSQL database (postgres container) for persistent storage o
 docker compose up -d
 ```
 
+**Important:** There should be five containers running -- check with ```docker ps```
+
+If there is not five, ```docker compose down``` & ```docker compose up -d```
+
+
 Access your tools:
 
 - Grafana: http://\<ServerIP>:3000 (user: `admin`, pass: `admin`)
@@ -107,11 +118,11 @@ Navigate to: **Connections → Data Sources → Add data source**
 
 1. **Prometheus**
     
-    - Prometheus Server URL: `http://serverIPrunningPrometheus:9090`
+    - Prometheus Server URL: `http://prometheus:9090`
         
 2. **Loki**
     
-    - Connection URL: `http://serverIPrunningLoki:3100`
+    - Connection URL: `http://loki:3100`
         
 
 ### Display Metrics
@@ -129,16 +140,26 @@ Navigate to: **Connections → Data Sources → Add data source**
 
 Explore more dashboards here: [Grafana Dashboards](https://grafana.com/grafana/dashboards/)
 
+There will be no metrics shown until a server listed in `prometheus.yml` is running NodeExporter: 
+
+To collect metrics from this Monitoring server run the script: (Change time in top right to last 10 minutes. It will take a minute to properly view the metrics in the dashboard)
+```
+chmod +x install-node-exporter.sh
+./install-node-exporter.sh
+```
+
 ---
 
 ## View Loki Logs
 
-1. Navigate to **Explore → Logs**
+1. Navigate to **Drilldown → Logs**
     
-2. Set datasource to **loki**
+2. All incoming docker container logs and files (specified in config.alloy for each server) will show
     
-3. Browse logs by container and filename name from incoming servers
+3. Use filter to browse logs by container and filename name from incoming servers
 
+
+Note: The newest version of Loki generates many errors due to an error on their end. You can ignore these for now. I will keep my eye on updates to Loki. 
 ---
 
 
