@@ -12,11 +12,10 @@ Storage | 200 GB SSD to 500 GB SSD
 
 ## Port Requirements
 ### Minimum Ports To Expose
-Required Ports:
 
-  - Grafana: 3000:3000
-  - Loki: 3100:3100
-  - Prometheus 9100:9100
+  - Grafana:    3000:3000
+  - Loki:       3100:3100
+  - Prometheus  9100:9100
 
 ### If using ufw: 
 ```
