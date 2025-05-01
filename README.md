@@ -2,6 +2,7 @@
 
 This repo contains a lightweight monitoring and logging stack using **Prometheus**, **Grafana**, **Loki**, and **Alloy**, plus a script for installing **Node Exporter** on remote servers.
 
+## Note: Make sure docker is installed!
 ---
 ## Recommended Minimum Server Requirements
 CPU cores | 4 to 8+
