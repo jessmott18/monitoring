@@ -20,7 +20,7 @@ services:
       - "3000:3000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin                        # Set Grafana admin password(Grafana default is admin/admin, it will require a change after first login)
-      - GF_SERVER_ROOT_URL=https://devops.programma.digital     # Set Grafana root URL
+      - GF_SERVER_ROOT_URL=                                     # Set Grafana root URL this will add your url to your alerts
       - GF_DATABASE_TYPE=postgres                               # Use PostgreSQL as the database 
       - GF_DATABASE_HOST=postgres:5432                          # PostgreSQL host and port 
       - GF_DATABASE_NAME=grafana_db                             # PostgreSQL database name
